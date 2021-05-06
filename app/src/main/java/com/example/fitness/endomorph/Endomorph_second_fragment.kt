@@ -1,11 +1,11 @@
 package com.example.fitness.endomorph
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.NumberPicker
+import androidx.fragment.app.Fragment
 import com.example.fitness.R
 
 
@@ -28,7 +28,7 @@ class Endomorph_second_fragment : Fragment() {
 
         var view: View
 
-        view = inflater.inflate(R.layout.fragment_second,container,false)
+        view = inflater.inflate(R.layout.fragment_second, container, false)
 
         height = view.findViewById(R.id.heightPicker)
         height.minValue = 140

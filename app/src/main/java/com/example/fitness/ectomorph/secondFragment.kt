@@ -1,16 +1,13 @@
 package com.example.fitness.ectomorph
 
-import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.NumberPicker
 import android.widget.TextView
-import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.example.fitness.R
-import kotlinx.android.synthetic.main.fragment_second.*
 
 class secondFragment : Fragment() {
 
@@ -18,9 +15,8 @@ class secondFragment : Fragment() {
     lateinit var weight: NumberPicker
     lateinit var age: NumberPicker
 
-    lateinit var kc : TextView
+    lateinit var kc: TextView
     var kcalValue = ""
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,14 +31,11 @@ class secondFragment : Fragment() {
     ): View? {
 
 
-
-
         var view: View
-        view = inflater.inflate(R.layout.fragment_second,container,false)
+        view = inflater.inflate(R.layout.fragment_second, container, false)
 
         //getData
-        if (activity!!.intent.hasExtra("Kcal"))
-        {
+        if (activity!!.intent.hasExtra("Kcal")) {
             val extras = activity!!.intent.extras
             kcalValue = extras!!.getString("Kcal").toString()
         }
@@ -73,7 +66,6 @@ class secondFragment : Fragment() {
 
         return view
     }
-
 
 
 }

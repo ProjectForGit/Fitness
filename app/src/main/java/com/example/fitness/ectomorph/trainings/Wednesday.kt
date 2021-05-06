@@ -1,19 +1,18 @@
 package com.example.fitness.ectomorph.trainings
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.SystemClock
 import android.view.View
 import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.example.fitness.DescriptionActivity
 import com.example.fitness.ListAdapter.Exercise
 import com.example.fitness.ListAdapter.ExerciseAdapter
 import com.example.fitness.R
 import kotlinx.android.synthetic.main.activity_wednesday.*
-import kotlinx.android.synthetic.main.activity_wednesday.startButton
 
 class Wednesday : AppCompatActivity() {
 
@@ -31,51 +30,59 @@ class Wednesday : AppCompatActivity() {
         var list = mutableListOf<Exercise>()
 
         list.add(
-            Exercise("Становая тяга", "4х12",
-            R.drawable.stanovaya
-        )
-        )
-        list.add(
-            Exercise("Подтягивания широким хватом", "4x12",
-            R.drawable.podtyagivaniya_shirokim_hvatom
-        )
+            Exercise(
+                "Становая тяга", "4х12",
+                R.drawable.stanovaya
+            )
         )
         list.add(
-            Exercise("Тяга гантели в наклоне", "3х10",
-            R.drawable.tyaga_ganteli
-        )
-        )
-        list.add(
-            Exercise("Тяга верхнего блока узким обратным хватом", "3х10",
-            R.drawable.tyaga_blocka
-        )
+            Exercise(
+                "Подтягивания широким хватом", "4x12",
+                R.drawable.podtyagivaniya_shirokim_hvatom
+            )
         )
         list.add(
-            Exercise("Подъемы штанги на бицепс", "3х12",
-            R.drawable.shtanga_na_biceps
-        )
+            Exercise(
+                "Тяга гантели в наклоне", "3х10",
+                R.drawable.tyaga_ganteli
+            )
         )
         list.add(
-            Exercise("Подъемы ног в висе", "3x12",
-            R.drawable.podem_nog_v_vise_na_turnike
+            Exercise(
+                "Тяга верхнего блока узким обратным хватом", "3х10",
+                R.drawable.tyaga_blocka
+            )
         )
+        list.add(
+            Exercise(
+                "Подъемы штанги на бицепс", "3х12",
+                R.drawable.shtanga_na_biceps
+            )
+        )
+        list.add(
+            Exercise(
+                "Подъемы ног в висе", "3x12",
+                R.drawable.podem_nog_v_vise_na_turnike
+            )
         )
 
-        listView.adapter = ExerciseAdapter(this,
-            R.layout.row, list)
+        listView.adapter = ExerciseAdapter(
+            this,
+            R.layout.row, list
+        )
 
         listView.setOnItemClickListener { parent, view, position, id ->
 
             if (position == 0) {
                 startActivity(
                     Intent(this, DescriptionActivity::class.java)
-                    .apply {
-                        putExtra("Name", "Становая тяга")
-                        putExtra("Repeat", "12")
-                        putExtra("Podhod", "4")
-                        putExtra("Weight", "20")
-                        putExtra("Picture", R.drawable.stanovaya)
-                    })
+                        .apply {
+                            putExtra("Name", "Становая тяга")
+                            putExtra("Repeat", "12")
+                            putExtra("Podhod", "4")
+                            putExtra("Weight", "20")
+                            putExtra("Picture", R.drawable.stanovaya)
+                        })
             }
             if (position == 1) {
                 startActivity(
@@ -136,23 +143,20 @@ class Wednesday : AppCompatActivity() {
     }
 
     fun startButton(view: View) {
-        if (!on)
-        {
+        if (!on) {
             chronometer.visibility = view.visibility
             chronometer.start()
             Toast.makeText(this, "Тренировка начата", Toast.LENGTH_SHORT).show()
             startButton.setText("Завершить тренировку")
             on = true
-        }
-        else if (on)
-        {
+        } else if (on) {
             chronometer.stop()
             time = chronometer.text.toString()
             val builder = AlertDialog.Builder(this)
             builder.setTitle("Тренировка завершена")
                 .setMessage("Время тренировки: $time")
-                .setPositiveButton("ОК"){
-                        dialog, id -> dialog.cancel()
+                .setPositiveButton("ОК") { dialog, id ->
+                    dialog.cancel()
                 }.show()
             startButton.setText("Начать тренировку")
             on = false

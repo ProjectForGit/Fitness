@@ -1,12 +1,11 @@
 package com.example.fitness.mesomorph
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.example.fitness.R
-
 
 
 class Mesomorph_first_fragment : Fragment() {

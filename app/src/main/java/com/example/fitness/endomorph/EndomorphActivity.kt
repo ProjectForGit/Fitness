@@ -2,17 +2,17 @@ package com.example.fitness.endomorph
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import com.example.fitness.endomorph.trainings.EndomorphMonday
-import com.example.fitness.endomorph.trainings.EndomorphWednesday
+import androidx.appcompat.app.AppCompatActivity
 import com.example.fitness.R
 import com.example.fitness.ectomorph.firstFragment
-import com.example.fitness.fragments.adapters.ViewPagerAdapter
 import com.example.fitness.ectomorph.secondFragment
 import com.example.fitness.endomorph.trainings.EndomorphFriday
+import com.example.fitness.endomorph.trainings.EndomorphMonday
+import com.example.fitness.endomorph.trainings.EndomorphWednesday
+import com.example.fitness.fragments.adapters.ViewPagerAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_second.*
 import java.io.*
@@ -31,8 +31,7 @@ class EndomorphActivity : AppCompatActivity() {
 
         val path = getFileStreamPath(fileName)
 
-        if(path.exists())
-        {
+        if (path.exists()) {
             val fis: FileInputStream = this.openFileInput(fileName)
             val os = ObjectInputStream(fis)
             val kcalValue: String = os.readObject() as String
@@ -43,8 +42,7 @@ class EndomorphActivity : AppCompatActivity() {
     }
 
 
-
-    private fun setUpTabs(){
+    private fun setUpTabs() {
         val adapter = ViewPagerAdapter(supportFragmentManager)
         adapter.addFragment(firstFragment(), "Тренировки")
         adapter.addFragment(secondFragment(), "Расчёт калорий")
@@ -73,24 +71,20 @@ class EndomorphActivity : AppCompatActivity() {
         Calculation()
     }
 
-    fun Calculation()
-    {
+    fun Calculation() {
         val heightText = heightPicker.value.toString().toInt()
         val weightText = weightPicker.value.toString().toInt()
         val ageText = agePicker.value.toString().toInt()
         var value = 0.0
 
-        if(woman.isChecked)
-        {
+        if (woman.isChecked) {
             value = (447.7 + (9.2 * weightText) + (3.1 * heightText) - (4.3 * ageText)) * 1.2
             kcal.setText(value.toInt().toString())
         }
-        if (man.isChecked)
-        {
+        if (man.isChecked) {
             value = (88.36 + (13.4 * weightText) + (4.8 * heightText) - (5.7 * ageText)) * 1.5
             kcal.setText(value.toInt().toString())
         }
-
 
 
         val fos: FileOutputStream = this.openFileOutput(fileName, Context.MODE_PRIVATE)
@@ -105,10 +99,9 @@ class EndomorphActivity : AppCompatActivity() {
         // do nothing
     }
 
-    fun checkRadioButton()
-    {
-        if(woman.isChecked == false && man.isChecked == false)
+    fun checkRadioButton() {
+        if (woman.isChecked == false && man.isChecked == false)
             Toast.makeText(this, "Выберите пол", Toast.LENGTH_SHORT).show()
     }
 
-    }
+}

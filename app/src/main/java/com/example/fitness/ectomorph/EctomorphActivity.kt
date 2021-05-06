@@ -22,7 +22,6 @@ class EctomorphActivity : AppCompatActivity() {
     private val kcalFile: File = File(fileName)
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -31,8 +30,7 @@ class EctomorphActivity : AppCompatActivity() {
 
         val path = getFileStreamPath(fileName)
 
-        if(path.exists())
-        {
+        if (path.exists()) {
             val fis: FileInputStream = this.openFileInput(fileName)
             val os = ObjectInputStream(fis)
             val kcalValue: String = os.readObject() as String
@@ -44,7 +42,7 @@ class EctomorphActivity : AppCompatActivity() {
     }
 
 
-    private fun setUpTabs(){
+    private fun setUpTabs() {
         val adapter = ViewPagerAdapter(supportFragmentManager)
         adapter.addFragment(firstFragment(), "Тренировки")
         adapter.addFragment(secondFragment(), "Расчёт калорий")
@@ -53,19 +51,17 @@ class EctomorphActivity : AppCompatActivity() {
 
     }
 
-    fun MonCLick(view: View)
-    {
+    fun MonCLick(view: View) {
         val intent = Intent(this, Monday::class.java)
         startActivity(intent)
     }
 
-    fun WedClick(view: View)
-    {
+    fun WedClick(view: View) {
         val intent = Intent(this, Wednesday::class.java)
         startActivity(intent)
     }
-    fun FriClick(view: View)
-    {
+
+    fun FriClick(view: View) {
         val intent = Intent(this, Friday::class.java)
         startActivity(intent)
     }
@@ -75,26 +71,20 @@ class EctomorphActivity : AppCompatActivity() {
     }
 
 
-
-    fun Calculation()
-    {
+    fun Calculation() {
         val heightText = heightPicker.value.toString().toInt()
         val weightText = weightPicker.value.toString().toInt()
         val ageText = agePicker.value.toString().toInt()
         var value = 0.0
 
-        if(woman.isChecked)
-        {
-             value = (447.7 + (9.2 * weightText) + (3.1 * heightText) - (4.3 * ageText)) * 1.2
+        if (woman.isChecked) {
+            value = (447.7 + (9.2 * weightText) + (3.1 * heightText) - (4.3 * ageText)) * 1.2
             kcal.setText(value.toInt().toString())
         }
-        if (man.isChecked)
-        {
-             value = (88.36 + (13.4 * weightText) + (4.8 * heightText) - (5.7 * ageText)) * 1.5
+        if (man.isChecked) {
+            value = (88.36 + (13.4 * weightText) + (4.8 * heightText) - (5.7 * ageText)) * 1.5
             kcal.setText(value.toInt().toString())
         }
-
-
 
 
         val fos: FileOutputStream = this.openFileOutput(fileName, Context.MODE_PRIVATE)
@@ -109,9 +99,8 @@ class EctomorphActivity : AppCompatActivity() {
         // do nothing
     }
 
-    fun checkRadioButton()
-    {
-        if(woman.isChecked == false && man.isChecked == false)
+    fun checkRadioButton() {
+        if (woman.isChecked == false && man.isChecked == false)
             Toast.makeText(this, "Выберите пол", Toast.LENGTH_SHORT).show()
     }
 }

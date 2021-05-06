@@ -1,13 +1,13 @@
 package com.example.fitness.ectomorph.trainings
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.SystemClock
 import android.view.View
 import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.example.fitness.DescriptionActivity
 import com.example.fitness.ListAdapter.Exercise
 import com.example.fitness.ListAdapter.ExerciseAdapter

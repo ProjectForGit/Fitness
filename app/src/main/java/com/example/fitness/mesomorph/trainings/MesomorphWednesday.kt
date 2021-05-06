@@ -1,13 +1,13 @@
 package com.example.fitness.mesomorph.trainings
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.SystemClock
 import android.view.View
 import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.example.fitness.DescriptionActivity
 import com.example.fitness.ListAdapter.Exercise
 import com.example.fitness.ListAdapter.ExerciseAdapter
@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.activity_monday.*
 
 class MesomorphWednesday : AppCompatActivity() {
 
-    lateinit var listView:ListView
+    lateinit var listView: ListView
     var on: Boolean = false
     var time = ""
 
@@ -150,23 +150,20 @@ class MesomorphWednesday : AppCompatActivity() {
     }
 
     fun startButton(view: View) {
-        if (!on)
-        {
+        if (!on) {
             chronometer.visibility = view.visibility
             chronometer.start()
             Toast.makeText(this, "Тренировка начата", Toast.LENGTH_SHORT).show()
             startButton.setText("Завершить тренировку")
             on = true
-        }
-        else if (on)
-        {
+        } else if (on) {
             chronometer.stop()
             time = chronometer.text.toString()
             val builder = AlertDialog.Builder(this)
             builder.setTitle("Тренировка завершена")
                 .setMessage("Время тренировки: $time")
-                .setPositiveButton("ОК"){
-                        dialog, id -> dialog.cancel()
+                .setPositiveButton("ОК") { dialog, id ->
+                    dialog.cancel()
                 }.show()
             startButton.setText("Начать тренировку")
             on = false

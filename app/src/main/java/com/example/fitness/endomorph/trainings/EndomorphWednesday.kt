@@ -1,13 +1,13 @@
 package com.example.fitness.endomorph.trainings
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.SystemClock
 import android.view.View
 import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.example.fitness.DescriptionActivity
 import com.example.fitness.ListAdapter.Exercise
 import com.example.fitness.ListAdapter.ExerciseAdapter
@@ -29,48 +29,58 @@ class EndomorphWednesday : AppCompatActivity() {
         var list = mutableListOf<Exercise>()
 
         list.add(
-            Exercise("Подтягивания широким хватом", "4х15",
+            Exercise(
+                "Подтягивания широким хватом", "4х15",
                 R.drawable.podtyagivaniya_shirokim_hvatom
             )
         )
         list.add(
-            Exercise("Тяга штанги в наклоне", "4х10",
+            Exercise(
+                "Тяга штанги в наклоне", "4х10",
                 R.drawable.tyaga_k_poyasu
             )
         )
         list.add(
-            Exercise("Тяга вертикального блока узким обратным хватом", "3х10",
+            Exercise(
+                "Тяга вертикального блока узким обратным хватом", "3х10",
                 R.drawable.tyaga_blocka
             )
         )
         list.add(
-            Exercise("Тяга гантели в наклоне", "3x10",
+            Exercise(
+                "Тяга гантели в наклоне", "3x10",
                 R.drawable.tyaga_ganteli
             )
         )
         list.add(
-            Exercise("Гиперэкстензия", "4х15",
+            Exercise(
+                "Гиперэкстензия", "4х15",
                 R.drawable.giperekstenziya
             )
         )
         list.add(
-            Exercise("Подъемы штанги на бицепс стоя", "3х12",
+            Exercise(
+                "Подъемы штанги на бицепс стоя", "3х12",
                 R.drawable.shtanga_na_biceps
             )
         )
         list.add(
-            Exercise("Сгибания рук со гантелями на скамье Скотта", "3х10",
+            Exercise(
+                "Сгибания рук со гантелями на скамье Скотта", "3х10",
                 R.drawable.bitseps_skott
             )
         )
         list.add(
-            Exercise("Отведения в тренажере на заднюю дельту", "4х15",
+            Exercise(
+                "Отведения в тренажере на заднюю дельту", "4х15",
                 R.drawable.otvedenie_na_zadnyu_delty
             )
         )
 
-        listView.adapter = ExerciseAdapter(this,
-            R.layout.row, list)
+        listView.adapter = ExerciseAdapter(
+            this,
+            R.layout.row, list
+        )
 
         listView.setOnItemClickListener { parent, view, position, id ->
 
@@ -166,23 +176,20 @@ class EndomorphWednesday : AppCompatActivity() {
     }
 
     fun startButton(view: View) {
-        if (!on)
-        {
+        if (!on) {
             chronometer.visibility = view.visibility
             chronometer.start()
             Toast.makeText(this, "Тренировка начата", Toast.LENGTH_SHORT).show()
             startButton.setText("Завершить тренировку")
             on = true
-        }
-        else if (on)
-        {
+        } else if (on) {
             chronometer.stop()
             time = chronometer.text.toString()
             val builder = AlertDialog.Builder(this)
             builder.setTitle("Тренировка завершена")
                 .setMessage("Время тренировки: $time")
-                .setPositiveButton("ОК"){
-                        dialog, id -> dialog.cancel()
+                .setPositiveButton("ОК") { dialog, id ->
+                    dialog.cancel()
                 }.show()
             startButton.setText("Начать тренировку")
             on = false

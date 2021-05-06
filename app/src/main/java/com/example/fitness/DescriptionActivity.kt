@@ -1,11 +1,10 @@
 package com.example.fitness
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.fitness.ectomorph.trainings.Monday
 import kotlinx.android.synthetic.main.activity_description.*
 
@@ -18,7 +17,7 @@ class DescriptionActivity : AppCompatActivity() {
         setContentView(R.layout.activity_description)
 
         val extras = intent.extras
-        val Name  = extras!!.getString("Name")
+        val Name = extras!!.getString("Name")
         val Repeat = extras!!.getString("Repeat")
         val Podhod = extras!!.getString("Podhod")
         val Picture = extras!!.getInt("Picture")
