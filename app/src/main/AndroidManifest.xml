@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.fitness">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".Description" android:screenOrientation="portrait"/>
+        <activity android:name=".EctomorphCalc" android:screenOrientation="portrait"/>
+        <activity android:name=".endomorph.trainings.EndomorphFriday" android:screenOrientation="portrait"/>
+        <activity android:name=".endomorph.trainings.EndomorphWednesday" android:screenOrientation="portrait" />
+        <activity android:name=".endomorph.trainings.EndomorphMonday" android:screenOrientation="portrait"/>
+        <activity android:name=".mesomorph.trainings.MesomorphFriday" android:screenOrientation="portrait"/>
+        <activity android:name=".mesomorph.trainings.MesomorphWednesday" android:screenOrientation="portrait"/>
+        <activity android:name=".mesomorph.trainings.MesomorphMonday" android:screenOrientation="portrait"/>
+        <activity android:name=".ectomorph.trainings.Friday" android:screenOrientation="portrait"/>
+        <activity android:name=".ectomorph.trainings.Wednesday" android:screenOrientation="portrait"/>
+        <activity android:name=".ectomorph.trainings.Monday" android:screenOrientation="portrait"/>
+        <activity android:name=".endomorph.EndomorphActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".mesomorph.MesomorphActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ectomorph.EctomorphActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".StartActivity" android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Description">
+
+    <ImageView
+        android:id="@+id/image"
+        android:src="@drawable/jimshtangi"
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="2dp"/>
+
+    <TextView
+        android:background="#B2FF59"
+        android:textColor="#ffffff"
+        android:id="@+id/name"
+        android:textSize="25dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        style="@style/standartText"
+        android:text="Рекомендуемый вес: "
+        android:id="@+id/weight"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:textSize="20dp"
+        android:gravity="start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <ImageView
+        android:id="@+id/imageLeft"
+        app:layout_constraintTop_toBottomOf="@+id/weight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="200dp"
+        android:src="@drawable/circle"
+        android:layout_width="120dp"
+        android:layout_height="120dp"/>
+
+    <ImageView
+        android:id="@+id/imageRight"
+        app:layout_constraintTop_toBottomOf="@+id/weight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="200dp"
+        android:src="@drawable/circle"
+        android:layout_width="120dp"
+        android:layout_height="120dp"/>
+
+    <TextView
+        style="@style/standartText"
+        android:id="@+id/podhod"
+        android:textSize="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/imageRight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginLeft="200dp"
+        android:layout_marginTop="40dp"
+        />
+
+    <TextView
+        style="@style/standartText"
+        android:id="@+id/repeat"
+        android:textSize="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/imageLeft"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginRight="200dp"
+        android:layout_marginTop="40dp"
+        />
+
+        <TextView
+
+            style="@style/standartText"
+            android:text="Повторения"
+            android:textSize="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/imageLeft"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginRight="200dp"
+            android:layout_marginTop="11dp"
+            />
+
+        <TextView
+            style="@style/standartText"
+            android:text="Подходы"
+            android:textSize="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/imageLeft"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="11dp"
+            />
+
+
+    <Button
+        android:onClick="startButtonClick"
+        android:background="@drawable/trainingbuttons"
+        android:id="@+id/startButton"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="Выполнить упражнение"
+        android:layout_marginTop="220dp"
+        app:layout_constraintTop_toBottomOf="@+id/weight"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="30dp"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
