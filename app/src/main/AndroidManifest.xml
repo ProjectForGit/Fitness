@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Description" android:screenOrientation="portrait"/>
+        <activity android:name=".DescriptionActivity" android:screenOrientation="portrait"/>
         <activity android:name=".EctomorphCalc" android:screenOrientation="portrait"/>
         <activity android:name=".endomorph.trainings.EndomorphFriday" android:screenOrientation="portrait"/>
         <activity android:name=".endomorph.trainings.EndomorphWednesday" android:screenOrientation="portrait" />

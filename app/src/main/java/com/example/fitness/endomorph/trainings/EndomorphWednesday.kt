@@ -8,9 +8,9 @@ import android.view.View
 import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import com.example.fitness.Description
-import com.example.fitness.ListAdapter.Model
-import com.example.fitness.ListAdapter.MyListAdapter
+import com.example.fitness.DescriptionActivity
+import com.example.fitness.ListAdapter.Exercise
+import com.example.fitness.ListAdapter.ExerciseAdapter
 import com.example.fitness.R
 import kotlinx.android.synthetic.main.activity_monday.*
 
@@ -26,57 +26,57 @@ class EndomorphWednesday : AppCompatActivity() {
 
 
         listView = findViewById(R.id.listView)
-        var list = mutableListOf<Model>()
+        var list = mutableListOf<Exercise>()
 
         list.add(
-            Model("Подтягивания широким хватом", "4х15",
+            Exercise("Подтягивания широким хватом", "4х15",
                 R.drawable.podtyagivaniya_shirokim_hvatom
             )
         )
         list.add(
-            Model("Тяга штанги в наклоне", "4х10",
+            Exercise("Тяга штанги в наклоне", "4х10",
                 R.drawable.tyaga_k_poyasu
             )
         )
         list.add(
-            Model("Тяга вертикального блока узким обратным хватом", "3х10",
+            Exercise("Тяга вертикального блока узким обратным хватом", "3х10",
                 R.drawable.tyaga_blocka
             )
         )
         list.add(
-            Model("Тяга гантели в наклоне", "3x10",
+            Exercise("Тяга гантели в наклоне", "3x10",
                 R.drawable.tyaga_ganteli
             )
         )
         list.add(
-            Model("Гиперэкстензия", "4х15",
+            Exercise("Гиперэкстензия", "4х15",
                 R.drawable.giperekstenziya
             )
         )
         list.add(
-            Model("Подъемы штанги на бицепс стоя", "3х12",
+            Exercise("Подъемы штанги на бицепс стоя", "3х12",
                 R.drawable.shtanga_na_biceps
             )
         )
         list.add(
-            Model("Сгибания рук со гантелями на скамье Скотта", "3х10",
+            Exercise("Сгибания рук со гантелями на скамье Скотта", "3х10",
                 R.drawable.bitseps_skott
             )
         )
         list.add(
-            Model("Отведения в тренажере на заднюю дельту", "4х15",
+            Exercise("Отведения в тренажере на заднюю дельту", "4х15",
                 R.drawable.otvedenie_na_zadnyu_delty
             )
         )
 
-        listView.adapter = MyListAdapter(this,
+        listView.adapter = ExerciseAdapter(this,
             R.layout.row, list)
 
         listView.setOnItemClickListener { parent, view, position, id ->
 
             if (position == 0) {
                 startActivity(
-                    Intent(this, Description::class.java)
+                    Intent(this, DescriptionActivity::class.java)
                         .apply {
                             putExtra("Name", "Подтягивания широким хватом")
                             putExtra("Repeat", "15")
@@ -87,7 +87,7 @@ class EndomorphWednesday : AppCompatActivity() {
             }
             if (position == 1) {
                 startActivity(
-                    Intent(this, Description::class.java)
+                    Intent(this, DescriptionActivity::class.java)
                         .apply {
                             putExtra("Name", "Тяга штанги в наклоне")
                             putExtra("Repeat", "10")
@@ -98,7 +98,7 @@ class EndomorphWednesday : AppCompatActivity() {
             }
             if (position == 2) {
                 startActivity(
-                    Intent(this, Description::class.java)
+                    Intent(this, DescriptionActivity::class.java)
                         .apply {
                             putExtra("Name", "Тяга вертикального блока узким обратным хватом")
                             putExtra("Repeat", "10")
@@ -109,7 +109,7 @@ class EndomorphWednesday : AppCompatActivity() {
             }
             if (position == 3) {
                 startActivity(
-                    Intent(this, Description::class.java)
+                    Intent(this, DescriptionActivity::class.java)
                         .apply {
                             putExtra("Name", "Тяга гантели в наклоне")
                             putExtra("Repeat", "10")
@@ -120,7 +120,7 @@ class EndomorphWednesday : AppCompatActivity() {
             }
             if (position == 4) {
                 startActivity(
-                    Intent(this, Description::class.java)
+                    Intent(this, DescriptionActivity::class.java)
                         .apply {
                             putExtra("Name", "Гиперэкстензия")
                             putExtra("Repeat", "15")
@@ -131,7 +131,7 @@ class EndomorphWednesday : AppCompatActivity() {
             }
             if (position == 5) {
                 startActivity(
-                    Intent(this, Description::class.java)
+                    Intent(this, DescriptionActivity::class.java)
                         .apply {
                             putExtra("Name", "Подъемы штанги на бицепс стоя")
                             putExtra("Repeat", "12")
@@ -142,7 +142,7 @@ class EndomorphWednesday : AppCompatActivity() {
             }
             if (position == 6) {
                 startActivity(
-                    Intent(this, Description::class.java)
+                    Intent(this, DescriptionActivity::class.java)
                         .apply {
                             putExtra("Name", "Сгибания рук со гантелями на скамье Скотта")
                             putExtra("Repeat", "10")
@@ -153,7 +153,7 @@ class EndomorphWednesday : AppCompatActivity() {
             }
             if (position == 7) {
                 startActivity(
-                    Intent(this, Description::class.java)
+                    Intent(this, DescriptionActivity::class.java)
                         .apply {
                             putExtra("Name", "Отведения в тренажере на заднюю дельту")
                             putExtra("Repeat", "15")

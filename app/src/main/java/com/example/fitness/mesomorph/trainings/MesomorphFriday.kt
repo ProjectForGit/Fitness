@@ -8,9 +8,9 @@ import android.view.View
 import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import com.example.fitness.Description
-import com.example.fitness.ListAdapter.Model
-import com.example.fitness.ListAdapter.MyListAdapter
+import com.example.fitness.DescriptionActivity
+import com.example.fitness.ListAdapter.Exercise
+import com.example.fitness.ListAdapter.ExerciseAdapter
 import com.example.fitness.R
 import kotlinx.android.synthetic.main.activity_monday.*
 
@@ -26,52 +26,52 @@ class MesomorphFriday : AppCompatActivity() {
 
 
         listView = findViewById(R.id.listView)
-        var list = mutableListOf<Model>()
+        var list = mutableListOf<Exercise>()
 
         list.add(
-            Model(
+            Exercise(
                 "Приседания со штангой", "4х12",
                 R.drawable.prised
             )
         )
         list.add(
-            Model(
+            Exercise(
                 "Фронтальные приседания", "4х12",
                 R.drawable.front_prised
             )
         )
         list.add(
-            Model(
+            Exercise(
                 "Выпады со штангой", "4х20",
                 R.drawable.vipady_so_shtangoi
             )
         )
         list.add(
-            Model(
+            Exercise(
                 "Сгибания ног лежа в тренажере", "3х15",
                 R.drawable.sgibaniya_nog
             )
         )
         list.add(
-            Model(
+            Exercise(
                 "Подъем на носки стоя в тренажере", "4х15",
                 R.drawable.podem_na_noski
             )
         )
         list.add(
-            Model(
+            Exercise(
                 "Обратные скручивания на скамье", "3х15",
                 R.drawable.obratnie_skruchivaniya
             )
         )
         list.add(
-            Model(
+            Exercise(
                 "Скручивания в тренажере", "3х15",
                 R.drawable.skruchivaniya_na_trenajere
             )
         )
 
-        listView.adapter = MyListAdapter(
+        listView.adapter = ExerciseAdapter(
             this,
             R.layout.row, list
         )
@@ -80,7 +80,7 @@ class MesomorphFriday : AppCompatActivity() {
 
             if (position == 0) {
                 startActivity(
-                    Intent(this, Description::class.java)
+                    Intent(this, DescriptionActivity::class.java)
                         .apply {
                             putExtra("Name", "Приседания со штангой")
                             putExtra("Repeat", "12")
@@ -91,7 +91,7 @@ class MesomorphFriday : AppCompatActivity() {
             }
             if (position == 1) {
                 startActivity(
-                    Intent(this, Description::class.java)
+                    Intent(this, DescriptionActivity::class.java)
                         .apply {
                             putExtra("Name", "Фронтальные приседания")
                             putExtra("Repeat", "12")
@@ -102,7 +102,7 @@ class MesomorphFriday : AppCompatActivity() {
             }
             if (position == 2) {
                 startActivity(
-                    Intent(this, Description::class.java)
+                    Intent(this, DescriptionActivity::class.java)
                         .apply {
                             putExtra("Name", "Выпады со штангой")
                             putExtra("Repeat", "20")
@@ -113,7 +113,7 @@ class MesomorphFriday : AppCompatActivity() {
             }
             if (position == 3) {
                 startActivity(
-                    Intent(this, Description::class.java)
+                    Intent(this, DescriptionActivity::class.java)
                         .apply {
                             putExtra("Name", "Сгибания ног лежа в тренажере")
                             putExtra("Repeat", "15")
@@ -124,7 +124,7 @@ class MesomorphFriday : AppCompatActivity() {
             }
             if (position == 4) {
                 startActivity(
-                    Intent(this, Description::class.java)
+                    Intent(this, DescriptionActivity::class.java)
                         .apply {
                             putExtra("Name", "Подъем на носки стоя в тренажере")
                             putExtra("Repeat", "15")
@@ -135,7 +135,7 @@ class MesomorphFriday : AppCompatActivity() {
             }
             if (position == 5) {
                 startActivity(
-                    Intent(this, Description::class.java)
+                    Intent(this, DescriptionActivity::class.java)
                         .apply {
                             putExtra("Name", "Обратные скручивания на скамье")
                             putExtra("Repeat", "15")
@@ -146,7 +146,7 @@ class MesomorphFriday : AppCompatActivity() {
             }
             if (position == 6) {
                 startActivity(
-                    Intent(this, Description::class.java)
+                    Intent(this, DescriptionActivity::class.java)
                         .apply {
                             putExtra("Name", "Скручивания в тренажере")
                             putExtra("Repeat", "15")

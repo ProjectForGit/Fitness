@@ -8,9 +8,9 @@ import android.view.View
 import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import com.example.fitness.Description
-import com.example.fitness.ListAdapter.Model
-import com.example.fitness.ListAdapter.MyListAdapter
+import com.example.fitness.DescriptionActivity
+import com.example.fitness.ListAdapter.Exercise
+import com.example.fitness.ListAdapter.ExerciseAdapter
 import com.example.fitness.R
 import kotlinx.android.synthetic.main.activity_monday.*
 
@@ -27,52 +27,52 @@ class EndomorphFriday : AppCompatActivity() {
 
 
         listView = findViewById(R.id.listView)
-        var list = mutableListOf<Model>()
+        var list = mutableListOf<Exercise>()
 
         list.add(
-            Model("Приседания со штангой", "4х12",
+            Exercise("Приседания со штангой", "4х12",
                 R.drawable.prised
             )
         )
         list.add(
-            Model("Жим ногами", "3х12",
+            Exercise("Жим ногами", "3х12",
                 R.drawable.zhim_nogami
             )
         )
         list.add(
-            Model("Румынская тяга с гантелями", "4х12",
+            Exercise("Румынская тяга с гантелями", "4х12",
                 R.drawable.rumynskaya_yaga_ganteli
             )
         )
         list.add(
-            Model("Выпады с гантелями", "3х12",
+            Exercise("Выпады с гантелями", "3х12",
                 R.drawable.vipady_s_gantelyami
             )
         )
         list.add(
-            Model("Подъем на носки стоя в тренажере", "4х15",
+            Exercise("Подъем на носки стоя в тренажере", "4х15",
                 R.drawable.podem_na_noski
             )
         )
         list.add(
-            Model("Скручивания на скамье", "3х15",
+            Exercise("Скручивания на скамье", "3х15",
                 R.drawable.skruchivaniya_na_trenajere
             )
         )
         list.add(
-            Model("Подъемы ног в висе", "3х12",
+            Exercise("Подъемы ног в висе", "3х12",
                 R.drawable.podem_nog_v_vise_na_turnike
             )
         )
 
-        listView.adapter = MyListAdapter(this,
+        listView.adapter = ExerciseAdapter(this,
             R.layout.row, list)
 
         listView.setOnItemClickListener { parent, view, position, id ->
 
             if (position == 0) {
                 startActivity(
-                    Intent(this, Description::class.java)
+                    Intent(this, DescriptionActivity::class.java)
                         .apply {
                             putExtra("Name", "Приседания со штангой")
                             putExtra("Repeat", "12")
@@ -83,7 +83,7 @@ class EndomorphFriday : AppCompatActivity() {
             }
             if (position == 1) {
                 startActivity(
-                    Intent(this, Description::class.java)
+                    Intent(this, DescriptionActivity::class.java)
                         .apply {
                             putExtra("Name", "Жим ногами")
                             putExtra("Repeat", "12")
@@ -94,7 +94,7 @@ class EndomorphFriday : AppCompatActivity() {
             }
             if (position == 2) {
                 startActivity(
-                    Intent(this, Description::class.java)
+                    Intent(this, DescriptionActivity::class.java)
                         .apply {
                             putExtra("Name", "Румынская тяга с гантелями")
                             putExtra("Repeat", "12")
@@ -105,7 +105,7 @@ class EndomorphFriday : AppCompatActivity() {
             }
             if (position == 3) {
                 startActivity(
-                    Intent(this, Description::class.java)
+                    Intent(this, DescriptionActivity::class.java)
                         .apply {
                             putExtra("Name", "Выпады с гантелями")
                             putExtra("Repeat", "12")
@@ -116,7 +116,7 @@ class EndomorphFriday : AppCompatActivity() {
             }
             if (position == 4) {
                 startActivity(
-                    Intent(this, Description::class.java)
+                    Intent(this, DescriptionActivity::class.java)
                         .apply {
                             putExtra("Name", "Подъем на носки стоя в тренажере")
                             putExtra("Repeat", "15")
@@ -127,7 +127,7 @@ class EndomorphFriday : AppCompatActivity() {
             }
             if (position == 5) {
                 startActivity(
-                    Intent(this, Description::class.java)
+                    Intent(this, DescriptionActivity::class.java)
                         .apply {
                             putExtra("Name", "Скручивания на скамье")
                             putExtra("Repeat", "15")
@@ -138,7 +138,7 @@ class EndomorphFriday : AppCompatActivity() {
             }
             if (position == 6) {
                 startActivity(
-                    Intent(this, Description::class.java)
+                    Intent(this, DescriptionActivity::class.java)
                         .apply {
                             putExtra("Name", "Подъемы ног в висе")
                             putExtra("Repeat", "12")

@@ -8,9 +8,9 @@ import android.view.View
 import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import com.example.fitness.Description
-import com.example.fitness.ListAdapter.Model
-import com.example.fitness.ListAdapter.MyListAdapter
+import com.example.fitness.DescriptionActivity
+import com.example.fitness.ListAdapter.Exercise
+import com.example.fitness.ListAdapter.ExerciseAdapter
 import com.example.fitness.R
 import kotlinx.android.synthetic.main.activity_monday.*
 
@@ -25,52 +25,52 @@ class MesomorphMonday : AppCompatActivity() {
         setContentView(R.layout.activity_mesomorph_monday)
 
         listView = findViewById(R.id.listView)
-        var list = mutableListOf<Model>()
+        var list = mutableListOf<Exercise>()
 
         list.add(
-            Model(
+            Exercise(
                 "Жим штанги на наклонной скамье", "4х10",
                 R.drawable.zhim_verh
             )
         )
         list.add(
-            Model(
+            Exercise(
                 "Жим гантелей на горизонтальной скамье", "3х12",
                 R.drawable.zhim_gantelei_lezha
             )
         )
         list.add(
-            Model(
+            Exercise(
                 "Отжимания на брусьях", "3х12",
                 R.drawable.otjimaniya_na_brusyah
             )
         )
         list.add(
-            Model(
+            Exercise(
                 "Жим штанги лежа узким хватом", "3х10",
                 R.drawable.jim_uzkim_hvatom
             )
         )
         list.add(
-            Model(
+            Exercise(
                 "Французский жим со штангой", "3х12",
                 R.drawable.franzyskyi_zhim
             )
         )
         list.add(
-            Model(
+            Exercise(
                 "Жим гантелей сидя", "4х12",
                 R.drawable.zhim_sidya
             )
         )
         list.add(
-            Model(
+            Exercise(
                 "Тяга штанги к подбородку широким хватом", "3х12",
                 R.drawable.tyaga_k_podborodku
             )
         )
 
-        listView.adapter = MyListAdapter(
+        listView.adapter = ExerciseAdapter(
             this,
             R.layout.row, list
         )
@@ -79,7 +79,7 @@ class MesomorphMonday : AppCompatActivity() {
 
             if (position == 0) {
                 startActivity(
-                    Intent(this, Description::class.java)
+                    Intent(this, DescriptionActivity::class.java)
                         .apply {
                             putExtra("Name", "Жим штанги на наклонной скамье")
                             putExtra("Repeat", "10")
@@ -90,7 +90,7 @@ class MesomorphMonday : AppCompatActivity() {
             }
             if (position == 1) {
                 startActivity(
-                    Intent(this, Description::class.java)
+                    Intent(this, DescriptionActivity::class.java)
                         .apply {
                             putExtra("Name", "Жим гантелей на горизонтальной скамье")
                             putExtra("Repeat", "12")
@@ -101,7 +101,7 @@ class MesomorphMonday : AppCompatActivity() {
             }
             if (position == 2) {
                 startActivity(
-                    Intent(this, Description::class.java)
+                    Intent(this, DescriptionActivity::class.java)
                         .apply {
                             putExtra("Name", "Отжимания на брусьях")
                             putExtra("Repeat", "12")
@@ -112,7 +112,7 @@ class MesomorphMonday : AppCompatActivity() {
             }
             if (position == 3) {
                 startActivity(
-                    Intent(this, Description::class.java)
+                    Intent(this, DescriptionActivity::class.java)
                         .apply {
                             putExtra("Name", "Жим штанги лежа узким хватом")
                             putExtra("Repeat", "10")
@@ -123,7 +123,7 @@ class MesomorphMonday : AppCompatActivity() {
             }
             if (position == 4) {
                 startActivity(
-                    Intent(this, Description::class.java)
+                    Intent(this, DescriptionActivity::class.java)
                         .apply {
                             putExtra("Name", "Французский жим со штангой")
                             putExtra("Repeat", "12")
@@ -134,7 +134,7 @@ class MesomorphMonday : AppCompatActivity() {
             }
             if (position == 5) {
                 startActivity(
-                    Intent(this, Description::class.java)
+                    Intent(this, DescriptionActivity::class.java)
                         .apply {
                             putExtra("Name", "Жим гантелей сидя")
                             putExtra("Repeat", "12")
@@ -145,7 +145,7 @@ class MesomorphMonday : AppCompatActivity() {
             }
             if (position == 6) {
                 startActivity(
-                    Intent(this, Description::class.java)
+                    Intent(this, DescriptionActivity::class.java)
                         .apply {
                             putExtra("Name", "Тяга штанги к подбородку широким хватом")
                             putExtra("Repeat", "12")

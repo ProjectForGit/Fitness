@@ -7,11 +7,8 @@ import android.view.ViewGroup
 import android.widget.*
 import com.example.fitness.R
 
-class MyListAdapter(var mCtx: Context, var resource:Int, var items:List<Model>)
+class ExerciseAdapter(var mCtx: Context, var resource:Int, var items:List<Exercise>)
     : BaseAdapter(){
-
-
-
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
 
@@ -23,7 +20,7 @@ class MyListAdapter(var mCtx: Context, var resource:Int, var items:List<Model>)
         var textView1 = view.findViewById<TextView>(R.id.desc)
 
 
-        var person : Model = items[position]
+        var person : Exercise = items[position]
 
         imageView.setImageDrawable(mCtx.resources.getDrawable(person.photo))
         textView.text = person.title

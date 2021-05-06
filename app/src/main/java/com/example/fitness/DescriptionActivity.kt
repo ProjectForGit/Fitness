@@ -9,10 +9,9 @@ import android.widget.Toast
 import com.example.fitness.ectomorph.trainings.Monday
 import kotlinx.android.synthetic.main.activity_description.*
 
-class Description : AppCompatActivity() {
+class DescriptionActivity : AppCompatActivity() {
 
     lateinit var text: TextView
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +33,7 @@ class Description : AppCompatActivity() {
     }
 
     fun startButtonClick(view: View) {
-
+        Monday.exercisesList[intent.getIntExtra("pos", -1)].completed = true
         Toast.makeText(this, "Упражнение выполнено", Toast.LENGTH_SHORT).show()
     }
 }
