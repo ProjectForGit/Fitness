@@ -12,17 +12,20 @@ import com.example.fitness.DescriptionActivity
 import com.example.fitness.ListAdapter.Exercise
 import com.example.fitness.ListAdapter.ExerciseAdapter
 import com.example.fitness.R
+import com.example.fitness.endomorph.trainings.EndomorphMonday
 import kotlinx.android.synthetic.main.activity_monday.*
 
 class Monday : AppCompatActivity() {
 
     companion object {
         lateinit var exercisesList: ArrayList<Exercise>
+        var buttonState = false
     }
 
     lateinit var listView: ListView
     var on: Boolean = false
     var time = ""
+    private var exercisesValue = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -111,26 +114,34 @@ class Monday : AppCompatActivity() {
             Toast.makeText(this, "Тренировка начата", Toast.LENGTH_SHORT).show()
             startButton.setText("Завершить тренировку")
             on = true
+
+            buttonState = true
+
         } else if (on) {
             chronometer.stop()
             time = chronometer.text.toString()
             val builder = AlertDialog.Builder(this)
             builder.setTitle("Время тренировки: $time")
-                .setMessage("Выполнено упражнений: " + getCompletedExercisesCount())
+                .setMessage("Выполнено упражнений: " + getCompletedExercisesCount() + " из $exercisesValue")
                 .setPositiveButton("ОК") { dialog, id ->
                     dialog.cancel()
                 }.show()
             startButton.setText("Начать тренировку")
             on = false
             chronometer.setBase(SystemClock.elapsedRealtime())
+
+            buttonState = false
         }
     }
 
     private fun getCompletedExercisesCount(): Int {
+        exercisesValue = 0
         var completedExercisesCount = 0
         for (exercise in exercisesList) {
+            exercisesValue++
             if (exercise.completed) {
                 completedExercisesCount++
+                exercise.completed = false
             }
         }
         return completedExercisesCount

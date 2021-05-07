@@ -12,6 +12,8 @@ import com.example.fitness.DescriptionActivity
 import com.example.fitness.ListAdapter.Exercise
 import com.example.fitness.ListAdapter.ExerciseAdapter
 import com.example.fitness.R
+import com.example.fitness.ectomorph.trainings.Monday
+import com.example.fitness.ectomorph.trainings.Wednesday
 import kotlinx.android.synthetic.main.activity_monday.*
 
 class MesomorphWednesday : AppCompatActivity() {
@@ -19,6 +21,7 @@ class MesomorphWednesday : AppCompatActivity() {
     companion object
     {
         lateinit var exerciseList: ArrayList<Exercise>
+        var buttonState = false
     }
 
     lateinit var listView: ListView
@@ -115,6 +118,9 @@ class MesomorphWednesday : AppCompatActivity() {
             Toast.makeText(this, "Тренировка начата", Toast.LENGTH_SHORT).show()
             startButton.setText("Завершить тренировку")
             on = true
+
+            buttonState = true
+
         } else if (on) {
             chronometer.stop()
             time = chronometer.text.toString()
@@ -127,15 +133,19 @@ class MesomorphWednesday : AppCompatActivity() {
             startButton.setText("Начать тренировку")
             on = false
             chronometer.setBase(SystemClock.elapsedRealtime())
+
+            buttonState = false
         }
     }
 
     private fun getCompletedExercisesCount(): Int {
+        exercisesValue = 0
         var completedExercisesCount = 0
-        for (exercise in MesomorphWednesday.exerciseList) {
+        for (exercise in exerciseList) {
             exercisesValue++
             if (exercise.completed) {
                 completedExercisesCount++
+                exercise.completed = false
             }
         }
         return completedExercisesCount

@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.example.fitness.ectomorph.trainings.Friday
 import com.example.fitness.ectomorph.trainings.Monday
 import com.example.fitness.ectomorph.trainings.Wednesday
@@ -38,6 +39,7 @@ class DescriptionActivity : AppCompatActivity() {
         weight.setText("Рекомендуемый вес(кг): " + Weight)
         image.setImageResource(Picture)
 
+        buttonState()
     }
 
     fun startButtonClick(view: View) {
@@ -56,5 +58,11 @@ class DescriptionActivity : AppCompatActivity() {
             "EndomorphFriday" -> EndomorphFriday.exercisesList[intent.getIntExtra("pos", -1)].completed = true
         }
         Toast.makeText(this, "Упражнение выполнено", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun buttonState()
+    {
+        if (Monday.buttonState || Wednesday.buttonState || Friday.buttonState || MesomorphMonday.buttonState || MesomorphWednesday.buttonState || MesomorphFriday.buttonState || EndomorphMonday.buttonState || EndomorphWednesday.buttonState || EndomorphFriday.buttonState)
+            startButton.visibility = View.VISIBLE
     }
 }
