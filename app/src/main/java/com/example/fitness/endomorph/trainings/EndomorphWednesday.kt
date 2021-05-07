@@ -16,162 +16,112 @@ import kotlinx.android.synthetic.main.activity_monday.*
 
 class EndomorphWednesday : AppCompatActivity() {
 
+    companion object {
+        lateinit var exercisesList: ArrayList<Exercise>
+    }
+
     lateinit var listView: ListView
     var on: Boolean = false
     var time = ""
+    private var exercisesValue = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_endomorph_wednesday)
 
-
         listView = findViewById(R.id.listView)
-        var list = mutableListOf<Exercise>()
-
-        list.add(
-            Exercise(
-                "Подтягивания широким хватом", "4х15",
-                R.drawable.podtyagivaniya_shirokim_hvatom
-            )
-        )
-        list.add(
-            Exercise(
-                "Тяга штанги в наклоне", "4х10",
-                R.drawable.tyaga_k_poyasu
-            )
-        )
-        list.add(
-            Exercise(
-                "Тяга вертикального блока узким обратным хватом", "3х10",
-                R.drawable.tyaga_blocka
-            )
-        )
-        list.add(
-            Exercise(
-                "Тяга гантели в наклоне", "3x10",
-                R.drawable.tyaga_ganteli
-            )
-        )
-        list.add(
-            Exercise(
-                "Гиперэкстензия", "4х15",
-                R.drawable.giperekstenziya
-            )
-        )
-        list.add(
-            Exercise(
-                "Подъемы штанги на бицепс стоя", "3х12",
-                R.drawable.shtanga_na_biceps
-            )
-        )
-        list.add(
-            Exercise(
-                "Сгибания рук со гантелями на скамье Скотта", "3х10",
-                R.drawable.bitseps_skott
-            )
-        )
-        list.add(
-            Exercise(
-                "Отведения в тренажере на заднюю дельту", "4х15",
-                R.drawable.otvedenie_na_zadnyu_delty
-            )
+        exercisesList = arrayListOf(
+            Exercise("Подтягивания широким хватом", "4х15", R.drawable.podtyagivaniya_shirokim_hvatom),
+            Exercise("Тяга штанги в наклоне", "4х10", R.drawable.tyaga_k_poyasu),
+            Exercise("Тяга вертикального блока узким обратным хватом", "3х10", R.drawable.tyaga_blocka),
+            Exercise("Тяга гантели в наклоне", "3x10", R.drawable.tyaga_ganteli),
+            Exercise("Гиперэкстензия", "4х15", R.drawable.giperekstenziya),
+            Exercise("Подъемы штанги на бицепс стоя", "3х12", R.drawable.shtanga_na_biceps),
+            Exercise("Сгибания рук со гантелями на скамье Скотта", "3х10", R.drawable.bitseps_skott),
+            Exercise("Отведения в тренажере на заднюю дельту", "4х15", R.drawable.otvedenie_na_zadnyu_delty)
         )
 
-        listView.adapter = ExerciseAdapter(
-            this,
-            R.layout.row, list
-        )
+        listView.adapter = ExerciseAdapter(this, R.layout.row, exercisesList)
 
         listView.setOnItemClickListener { parent, view, position, id ->
-
-            if (position == 0) {
-                startActivity(
-                    Intent(this, DescriptionActivity::class.java)
-                        .apply {
-                            putExtra("Name", "Подтягивания широким хватом")
-                            putExtra("Repeat", "15")
-                            putExtra("Podhod", "4")
-                            putExtra("Weight", "собственный вес")
-                            putExtra("Picture", R.drawable.podtyagivaniya_shirokim_hvatom)
-                        })
+            val descIntent = Intent(this, DescriptionActivity::class.java)
+            when (position) {
+                0 -> {
+                    descIntent.apply {
+                                putExtra("Name", "Подтягивания широким хватом")
+                                putExtra("Repeat", "15")
+                                putExtra("Podhod", "4")
+                                putExtra("Weight", "собственный вес")
+                                putExtra("Picture", R.drawable.podtyagivaniya_shirokim_hvatom)
+                    }
+                }
+                1 -> {
+                    descIntent.apply {
+                                putExtra("Name", "Тяга штанги в наклоне")
+                                putExtra("Repeat", "10")
+                                putExtra("Podhod", "4")
+                                putExtra("Weight", "15")
+                                putExtra("Picture", R.drawable.tyaga_k_poyasu)
+                    }
+                }
+                2 -> {
+                    descIntent.apply {
+                                putExtra("Name", "Тяга вертикального блока узким обратным хватом")
+                                putExtra("Repeat", "10")
+                                putExtra("Podhod", "3")
+                                putExtra("Weight", "30")
+                                putExtra("Picture", R.drawable.tyaga_blocka)
+                    }
+                }
+                3 -> {
+                    descIntent.apply {
+                                putExtra("Name", "Тяга гантели в наклоне")
+                                putExtra("Repeat", "10")
+                                putExtra("Podhod", "3")
+                                putExtra("Weight", "30")
+                                putExtra("Picture", R.drawable.tyaga_ganteli)
+                    }
+                }
+                4 -> {
+                    descIntent.apply {
+                                putExtra("Name", "Гиперэкстензия")
+                                putExtra("Repeat", "15")
+                                putExtra("Podhod", "4")
+                                putExtra("Weight", "15")
+                                putExtra("Picture", R.drawable.giperekstenziya)
+                    }
+                }
+                5 -> {
+                    descIntent.apply {
+                                putExtra("Name", "Подъемы штанги на бицепс стоя")
+                                putExtra("Repeat", "12")
+                                putExtra("Podhod", "3")
+                                putExtra("Weight", "25")
+                                putExtra("Picture", R.drawable.shtanga_na_biceps)
+                    }
+                }
+                6 -> {
+                    descIntent.apply {
+                                putExtra("Name", "Сгибания рук со гантелями на скамье Скотта")
+                                putExtra("Repeat", "10")
+                                putExtra("Podhod", "3")
+                                putExtra("Weight", "12")
+                                putExtra("Picture", R.drawable.bitseps_skott)
+                    }
+                }
+                7 -> {
+                    descIntent.apply {
+                                putExtra("Name", "Отведения в тренажере на заднюю дельту")
+                                putExtra("Repeat", "15")
+                                putExtra("Podhod", "4")
+                                putExtra("Weight", "25")
+                                putExtra("Picture", R.drawable.otvedenie_na_zadnyu_delty)
+                    }
+                }
             }
-            if (position == 1) {
-                startActivity(
-                    Intent(this, DescriptionActivity::class.java)
-                        .apply {
-                            putExtra("Name", "Тяга штанги в наклоне")
-                            putExtra("Repeat", "10")
-                            putExtra("Podhod", "4")
-                            putExtra("Weight", "15")
-                            putExtra("Picture", R.drawable.tyaga_k_poyasu)
-                        })
-            }
-            if (position == 2) {
-                startActivity(
-                    Intent(this, DescriptionActivity::class.java)
-                        .apply {
-                            putExtra("Name", "Тяга вертикального блока узким обратным хватом")
-                            putExtra("Repeat", "10")
-                            putExtra("Podhod", "3")
-                            putExtra("Weight", "30")
-                            putExtra("Picture", R.drawable.tyaga_blocka)
-                        })
-            }
-            if (position == 3) {
-                startActivity(
-                    Intent(this, DescriptionActivity::class.java)
-                        .apply {
-                            putExtra("Name", "Тяга гантели в наклоне")
-                            putExtra("Repeat", "10")
-                            putExtra("Podhod", "3")
-                            putExtra("Weight", "30")
-                            putExtra("Picture", R.drawable.tyaga_ganteli)
-                        })
-            }
-            if (position == 4) {
-                startActivity(
-                    Intent(this, DescriptionActivity::class.java)
-                        .apply {
-                            putExtra("Name", "Гиперэкстензия")
-                            putExtra("Repeat", "15")
-                            putExtra("Podhod", "4")
-                            putExtra("Weight", "15")
-                            putExtra("Picture", R.drawable.giperekstenziya)
-                        })
-            }
-            if (position == 5) {
-                startActivity(
-                    Intent(this, DescriptionActivity::class.java)
-                        .apply {
-                            putExtra("Name", "Подъемы штанги на бицепс стоя")
-                            putExtra("Repeat", "12")
-                            putExtra("Podhod", "3")
-                            putExtra("Weight", "25")
-                            putExtra("Picture", R.drawable.shtanga_na_biceps)
-                        })
-            }
-            if (position == 6) {
-                startActivity(
-                    Intent(this, DescriptionActivity::class.java)
-                        .apply {
-                            putExtra("Name", "Сгибания рук со гантелями на скамье Скотта")
-                            putExtra("Repeat", "10")
-                            putExtra("Podhod", "3")
-                            putExtra("Weight", "12")
-                            putExtra("Picture", R.drawable.bitseps_skott)
-                        })
-            }
-            if (position == 7) {
-                startActivity(
-                    Intent(this, DescriptionActivity::class.java)
-                        .apply {
-                            putExtra("Name", "Отведения в тренажере на заднюю дельту")
-                            putExtra("Repeat", "15")
-                            putExtra("Podhod", "4")
-                            putExtra("Weight", "25")
-                            putExtra("Picture", R.drawable.otvedenie_na_zadnyu_delty)
-                        })
-            }
+            descIntent.putExtra("day", "EndomorphWednesday")
+            descIntent.putExtra("pos", position)
+            startActivity(descIntent)
         }
     }
 
@@ -186,8 +136,8 @@ class EndomorphWednesday : AppCompatActivity() {
             chronometer.stop()
             time = chronometer.text.toString()
             val builder = AlertDialog.Builder(this)
-            builder.setTitle("Тренировка завершена")
-                .setMessage("Время тренировки: $time")
+            builder.setTitle("Время тренировки: $time")
+                .setMessage("Выполнено упражнений: " + getCompletedExercisesCount() + " из $exercisesValue")
                 .setPositiveButton("ОК") { dialog, id ->
                     dialog.cancel()
                 }.show()
@@ -195,6 +145,17 @@ class EndomorphWednesday : AppCompatActivity() {
             on = false
             chronometer.setBase(SystemClock.elapsedRealtime())
         }
+    }
+
+    private fun getCompletedExercisesCount(): Int {
+        var completedExercisesCount = 0
+        for (exercise in EndomorphWednesday.exercisesList) {
+            exercisesValue++
+            if (exercise.completed) {
+                completedExercisesCount++
+            }
+        }
+        return completedExercisesCount
     }
 
 }

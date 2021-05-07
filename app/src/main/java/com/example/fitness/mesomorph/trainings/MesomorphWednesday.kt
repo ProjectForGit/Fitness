@@ -16,136 +16,95 @@ import kotlinx.android.synthetic.main.activity_monday.*
 
 class MesomorphWednesday : AppCompatActivity() {
 
+    companion object
+    {
+        lateinit var exerciseList: ArrayList<Exercise>
+    }
+
     lateinit var listView: ListView
     var on: Boolean = false
     var time = ""
+    private var exercisesValue = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mesomorph_wednesday)
 
-
-
         listView = findViewById(R.id.listView)
-        var list = mutableListOf<Exercise>()
-
-        list.add(
-            Exercise(
-                "Становая тяга", "4х12",
-                R.drawable.stanovaya
-            )
-        )
-        list.add(
-            Exercise(
-                "Подтягивания широким хватом", "4х12",
-                R.drawable.podtyagivaniya_shirokim_hvatom
-            )
-        )
-        list.add(
-            Exercise(
-                "Тяга штанги в наклоне", "3х10",
-                R.drawable.tyaga_k_poyasu
-            )
-        )
-        list.add(
-            Exercise(
-                "Тяга вертикального блока узким обратным хватом", "3х12",
-                R.drawable.tyaga_blocka
-            )
-        )
-        list.add(
-            Exercise(
-                "Горизонтальная тяга", "3х12",
-                R.drawable.gorizontalnaya_tyaga
-            )
-        )
-        list.add(
-            Exercise(
-                "Подъемы гантелей на бицепс сидя на наклонной скамье", "4х10",
-                R.drawable.bitseps_ganteli
-            )
-        )
-        list.add(
-            Exercise(
-                "Махи гантелями в наклоне", "4х15",
-                R.drawable.mahi_v_naklone
-            )
+        exerciseList = arrayListOf(
+            Exercise("Становая тяга", "4х12", R.drawable.stanovaya),
+            Exercise("Подтягивания широким хватом", "4х12", R.drawable.podtyagivaniya_shirokim_hvatom),
+            Exercise("Тяга штанги в наклоне", "3х10", R.drawable.tyaga_k_poyasu),
+            Exercise("Тяга вертикального блока узким обратным хватом", "3х12", R.drawable.tyaga_blocka),
+            Exercise("Горизонтальная тяга", "3х12", R.drawable.gorizontalnaya_tyaga),
+            Exercise("Подъемы гантелей на бицепс сидя на наклонной скамье", "4х10", R.drawable.bitseps_ganteli),
+            Exercise("Махи гантелями в наклоне", "4х15", R.drawable.mahi_v_naklone)
         )
 
-        listView.adapter = ExerciseAdapter(
-            this,
-            R.layout.row, list
-        )
+        listView.adapter = ExerciseAdapter(this, R.layout.row, exerciseList)
 
         listView.setOnItemClickListener { parent, view, position, id ->
+            val descIntent = Intent(this, DescriptionActivity::class.java)
+            when (position) {
+                0 -> {
 
-            if (position == 0) {
-                startActivity(
-                    Intent(this, DescriptionActivity::class.java)
-                        .apply {
-                            putExtra("Name", "Становая тяга")
-                            putExtra("Repeat", "12")
-                            putExtra("Podhod", "3")
-                            putExtra("Weight", "25")
-                            putExtra("Picture", R.drawable.stanovaya)
-                        })
+                    descIntent.apply {
+                                putExtra("Name", "Становая тяга")
+                                putExtra("Repeat", "12")
+                                putExtra("Podhod", "3")
+                                putExtra("Weight", "25")
+                                putExtra("Picture", R.drawable.stanovaya)
+                    }
+                }
+                1 -> {
+                    descIntent.apply {
+                                putExtra("Name", "Подтягивания широким хватом")
+                                putExtra("Repeat", "12")
+                                putExtra("Podhod", "4")
+                                putExtra("Weight", "собственный вес")
+                                putExtra("Picture", R.drawable.podtyagivaniya_shirokim_hvatom)
+                    }
+                }
+                2 -> {
+                    descIntent.apply {
+                                putExtra("Name", "Тяга штанги в наклоне")
+                                putExtra("Repeat", "10")
+                                putExtra("Podhod", "3")
+                                putExtra("Weight", "15")
+                                putExtra("Picture", R.drawable.tyaga_k_poyasu)
+                    }
+                }
+                3 -> {
+                    descIntent.apply {
+                                putExtra("Name", "Тяга вертикального блока узким обратным хватом")
+                                putExtra("Repeat", "12")
+                                putExtra("Podhod", "3")
+                                putExtra("Weight", "25")
+                                putExtra("Picture", R.drawable.tyaga_blocka)
+                    }
+                }
+                4 -> {
+                    descIntent.apply {
+                                putExtra("Name", "Горизонтальная тяга")
+                                putExtra("Repeat", "12")
+                                putExtra("Podhod", "3")
+                                putExtra("Weight", "25")
+                                putExtra("Picture", R.drawable.gorizontalnaya_tyaga)
+                    }
+                }
+                6 -> {
+                    descIntent.apply {
+                                putExtra("Name", "Махи гантелями в наклоне")
+                                putExtra("Repeat", "15")
+                                putExtra("Podhod", "4")
+                                putExtra("Weight", "10")
+                                putExtra("Picture", R.drawable.mahi_v_naklone)
+                    }
+                }
             }
-            if (position == 1) {
-                startActivity(
-                    Intent(this, DescriptionActivity::class.java)
-                        .apply {
-                            putExtra("Name", "Подтягивания широким хватом")
-                            putExtra("Repeat", "12")
-                            putExtra("Podhod", "4")
-                            putExtra("Weight", "собственный вес")
-                            putExtra("Picture", R.drawable.podtyagivaniya_shirokim_hvatom)
-                        })
-            }
-            if (position == 2) {
-                startActivity(
-                    Intent(this, DescriptionActivity::class.java)
-                        .apply {
-                            putExtra("Name", "Тяга штанги в наклоне")
-                            putExtra("Repeat", "10")
-                            putExtra("Podhod", "3")
-                            putExtra("Weight", "15")
-                            putExtra("Picture", R.drawable.tyaga_k_poyasu)
-                        })
-            }
-            if (position == 3) {
-                startActivity(
-                    Intent(this, DescriptionActivity::class.java)
-                        .apply {
-                            putExtra("Name", "Тяга вертикального блока узким обратным хватом")
-                            putExtra("Repeat", "12")
-                            putExtra("Podhod", "3")
-                            putExtra("Weight", "25")
-                            putExtra("Picture", R.drawable.tyaga_blocka)
-                        })
-            }
-            if (position == 4) {
-                startActivity(
-                    Intent(this, DescriptionActivity::class.java)
-                        .apply {
-                            putExtra("Name", "Горизонтальная тяга")
-                            putExtra("Repeat", "12")
-                            putExtra("Podhod", "3")
-                            putExtra("Weight", "25")
-                            putExtra("Picture", R.drawable.gorizontalnaya_tyaga)
-                        })
-            }
-            if (position == 6) {
-                startActivity(
-                    Intent(this, DescriptionActivity::class.java)
-                        .apply {
-                            putExtra("Name", "Махи гантелями в наклоне")
-                            putExtra("Repeat", "15")
-                            putExtra("Podhod", "4")
-                            putExtra("Weight", "10")
-                            putExtra("Picture", R.drawable.mahi_v_naklone)
-                        })
-            }
-
+            descIntent.putExtra("day", "MesomorphWednesday")
+            descIntent.putExtra("pos", position)
+            startActivity(descIntent)
         }
     }
 
@@ -160,8 +119,8 @@ class MesomorphWednesday : AppCompatActivity() {
             chronometer.stop()
             time = chronometer.text.toString()
             val builder = AlertDialog.Builder(this)
-            builder.setTitle("Тренировка завершена")
-                .setMessage("Время тренировки: $time")
+            builder.setTitle("Время тренировки: $time")
+                .setMessage("Выполнено упражнений: " + getCompletedExercisesCount() + " из $exercisesValue")
                 .setPositiveButton("ОК") { dialog, id ->
                     dialog.cancel()
                 }.show()
@@ -169,5 +128,16 @@ class MesomorphWednesday : AppCompatActivity() {
             on = false
             chronometer.setBase(SystemClock.elapsedRealtime())
         }
+    }
+
+    private fun getCompletedExercisesCount(): Int {
+        var completedExercisesCount = 0
+        for (exercise in MesomorphWednesday.exerciseList) {
+            exercisesValue++
+            if (exercise.completed) {
+                completedExercisesCount++
+            }
+        }
+        return completedExercisesCount
     }
 }

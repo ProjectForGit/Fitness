@@ -5,8 +5,17 @@ import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.fitness.ectomorph.trainings.Friday
 import com.example.fitness.ectomorph.trainings.Monday
+import com.example.fitness.ectomorph.trainings.Wednesday
+import com.example.fitness.endomorph.trainings.EndomorphFriday
+import com.example.fitness.endomorph.trainings.EndomorphMonday
+import com.example.fitness.endomorph.trainings.EndomorphWednesday
+import com.example.fitness.mesomorph.trainings.MesomorphFriday
+import com.example.fitness.mesomorph.trainings.MesomorphMonday
+import com.example.fitness.mesomorph.trainings.MesomorphWednesday
 import kotlinx.android.synthetic.main.activity_description.*
+import kotlinx.android.synthetic.main.fragment_first.*
 
 class DescriptionActivity : AppCompatActivity() {
 
@@ -32,7 +41,20 @@ class DescriptionActivity : AppCompatActivity() {
     }
 
     fun startButtonClick(view: View) {
-        Monday.exercisesList[intent.getIntExtra("pos", -1)].completed = true
+        val extras = intent.extras
+        val day = extras!!.getString("day")
+
+        when (day) {
+            "Monday" -> Monday.exercisesList[intent.getIntExtra("pos", -1)].completed = true
+            "Friday" -> Friday.exercisesList[intent.getIntExtra("pos", -1)].completed = true
+            "Wednesday" -> Wednesday.exercisesList[intent.getIntExtra("pos", -1)].completed = true
+            "MesomorphMonday" -> MesomorphMonday.exercisesList[intent.getIntExtra("pos", -1)].completed = true
+            "MesomorphWednesday" -> MesomorphWednesday.exerciseList[intent.getIntExtra("pos", -1)].completed = true
+            "MesomorphFriday" -> MesomorphFriday.exercisesList[intent.getIntExtra("pos", -1)].completed = true
+            "EndomorphMonday" -> EndomorphMonday.exercisesList[intent.getIntExtra("pos", -1)].completed = true
+            "EndomorphWednesday" -> EndomorphWednesday.exercisesList[intent.getIntExtra("pos", -1)].completed = true
+            "EndomorphFriday" -> EndomorphFriday.exercisesList[intent.getIntExtra("pos", -1)].completed = true
+        }
         Toast.makeText(this, "Упражнение выполнено", Toast.LENGTH_SHORT).show()
     }
 }

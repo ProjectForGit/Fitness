@@ -16,9 +16,14 @@ import kotlinx.android.synthetic.main.activity_monday.*
 
 class MesomorphFriday : AppCompatActivity() {
 
+    companion object {
+        lateinit var exercisesList: ArrayList<Exercise>
+    }
+
     lateinit var listView: ListView
     var on: Boolean = false
     var time = ""
+    private var exercisesValue = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,135 +31,88 @@ class MesomorphFriday : AppCompatActivity() {
 
 
         listView = findViewById(R.id.listView)
-        var list = mutableListOf<Exercise>()
-
-        list.add(
-            Exercise(
-                "Приседания со штангой", "4х12",
-                R.drawable.prised
-            )
-        )
-        list.add(
-            Exercise(
-                "Фронтальные приседания", "4х12",
-                R.drawable.front_prised
-            )
-        )
-        list.add(
-            Exercise(
-                "Выпады со штангой", "4х20",
-                R.drawable.vipady_so_shtangoi
-            )
-        )
-        list.add(
-            Exercise(
-                "Сгибания ног лежа в тренажере", "3х15",
-                R.drawable.sgibaniya_nog
-            )
-        )
-        list.add(
-            Exercise(
-                "Подъем на носки стоя в тренажере", "4х15",
-                R.drawable.podem_na_noski
-            )
-        )
-        list.add(
-            Exercise(
-                "Обратные скручивания на скамье", "3х15",
-                R.drawable.obratnie_skruchivaniya
-            )
-        )
-        list.add(
-            Exercise(
-                "Скручивания в тренажере", "3х15",
-                R.drawable.skruchivaniya_na_trenajere
-            )
+        exercisesList = arrayListOf(
+            Exercise("Приседания со штангой", "4х12", R.drawable.prised),
+            Exercise("Фронтальные приседания", "4х12", R.drawable.front_prised),
+            Exercise("Выпады со штангой", "4х20", R.drawable.vipady_so_shtangoi),
+            Exercise("Сгибания ног лежа в тренажере", "3х15", R.drawable.sgibaniya_nog),
+            Exercise("Подъем на носки стоя в тренажере", "4х15", R.drawable.podem_na_noski),
+            Exercise("Обратные скручивания на скамье", "3х15", R.drawable.obratnie_skruchivaniya),
+            Exercise("Скручивания в тренажере", "3х15", R.drawable.skruchivaniya_na_trenajere)
         )
 
-        listView.adapter = ExerciseAdapter(
-            this,
-            R.layout.row, list
-        )
+        listView.adapter = ExerciseAdapter(this, R.layout.row, exercisesList)
 
         listView.setOnItemClickListener { parent, view, position, id ->
-
-            if (position == 0) {
-                startActivity(
-                    Intent(this, DescriptionActivity::class.java)
-                        .apply {
-                            putExtra("Name", "Приседания со штангой")
-                            putExtra("Repeat", "12")
-                            putExtra("Podhod", "4")
-                            putExtra("Weight", "25")
-                            putExtra("Picture", R.drawable.prised)
-                        })
+            val descIntent = Intent(this, DescriptionActivity::class.java)
+            when (position) {
+                0 -> {
+                    descIntent.apply {
+                                putExtra("Name", "Приседания со штангой")
+                                putExtra("Repeat", "12")
+                                putExtra("Podhod", "4")
+                                putExtra("Weight", "25")
+                                putExtra("Picture", R.drawable.prised)
+                    }
+                }
+                1 -> {
+                    descIntent.apply {
+                                putExtra("Name", "Фронтальные приседания")
+                                putExtra("Repeat", "12")
+                                putExtra("Podhod", "4")
+                                putExtra("Weight", "20")
+                                putExtra("Picture", R.drawable.front_prised)
+                    }
+                }
+                2 -> {
+                    descIntent.apply {
+                                putExtra("Name", "Выпады со штангой")
+                                putExtra("Repeat", "20")
+                                putExtra("Podhod", "4")
+                                putExtra("Weight", "15")
+                                putExtra("Picture", R.drawable.vipady_so_shtangoi)
+                    }
+                }
+                3 -> {
+                    descIntent.apply {
+                                putExtra("Name", "Сгибания ног лежа в тренажере")
+                                putExtra("Repeat", "15")
+                                putExtra("Podhod", "3")
+                                putExtra("Weight", "собственный вес")
+                                putExtra("Picture", R.drawable.sgibaniya_nog)
+                    }
+                }
+                4 -> {
+                    descIntent.apply {
+                                putExtra("Name", "Подъем на носки стоя в тренажере")
+                                putExtra("Repeat", "15")
+                                putExtra("Podhod", "4")
+                                putExtra("Weight", "25")
+                                putExtra("Picture", R.drawable.podem_na_noski)
+                    }
+                }
+                5 -> {
+                    descIntent.apply {
+                                putExtra("Name", "Обратные скручивания на скамье")
+                                putExtra("Repeat", "15")
+                                putExtra("Podhod", "3")
+                                putExtra("Weight", "собственный вес")
+                                putExtra("Picture", R.drawable.obratnie_skruchivaniya)
+                    }
+                }
+                6 -> {
+                    descIntent.apply {
+                                putExtra("Name", "Скручивания в тренажере")
+                                putExtra("Repeat", "15")
+                                putExtra("Podhod", "3")
+                                putExtra("Weight", "собственный вес")
+                                putExtra("Picture", R.drawable.skruchivaniya_na_trenajere)
+                    }
+                }
             }
-            if (position == 1) {
-                startActivity(
-                    Intent(this, DescriptionActivity::class.java)
-                        .apply {
-                            putExtra("Name", "Фронтальные приседания")
-                            putExtra("Repeat", "12")
-                            putExtra("Podhod", "4")
-                            putExtra("Weight", "20")
-                            putExtra("Picture", R.drawable.front_prised)
-                        })
-            }
-            if (position == 2) {
-                startActivity(
-                    Intent(this, DescriptionActivity::class.java)
-                        .apply {
-                            putExtra("Name", "Выпады со штангой")
-                            putExtra("Repeat", "20")
-                            putExtra("Podhod", "4")
-                            putExtra("Weight", "15")
-                            putExtra("Picture", R.drawable.vipady_so_shtangoi)
-                        })
-            }
-            if (position == 3) {
-                startActivity(
-                    Intent(this, DescriptionActivity::class.java)
-                        .apply {
-                            putExtra("Name", "Сгибания ног лежа в тренажере")
-                            putExtra("Repeat", "15")
-                            putExtra("Podhod", "3")
-                            putExtra("Weight", "собственный вес")
-                            putExtra("Picture", R.drawable.sgibaniya_nog)
-                        })
-            }
-            if (position == 4) {
-                startActivity(
-                    Intent(this, DescriptionActivity::class.java)
-                        .apply {
-                            putExtra("Name", "Подъем на носки стоя в тренажере")
-                            putExtra("Repeat", "15")
-                            putExtra("Podhod", "4")
-                            putExtra("Weight", "25")
-                            putExtra("Picture", R.drawable.podem_na_noski)
-                        })
-            }
-            if (position == 5) {
-                startActivity(
-                    Intent(this, DescriptionActivity::class.java)
-                        .apply {
-                            putExtra("Name", "Обратные скручивания на скамье")
-                            putExtra("Repeat", "15")
-                            putExtra("Podhod", "3")
-                            putExtra("Weight", "собственный вес")
-                            putExtra("Picture", R.drawable.obratnie_skruchivaniya)
-                        })
-            }
-            if (position == 6) {
-                startActivity(
-                    Intent(this, DescriptionActivity::class.java)
-                        .apply {
-                            putExtra("Name", "Скручивания в тренажере")
-                            putExtra("Repeat", "15")
-                            putExtra("Podhod", "3")
-                            putExtra("Weight", "собственный вес")
-                            putExtra("Picture", R.drawable.skruchivaniya_na_trenajere)
-                        })
-            }
+            descIntent.putExtra("day", "MesomorphFriday")
+            descIntent.putExtra("pos", position)
+            startActivity(descIntent)
         }
     }
 
@@ -169,8 +127,8 @@ class MesomorphFriday : AppCompatActivity() {
             chronometer.stop()
             time = chronometer.text.toString()
             val builder = AlertDialog.Builder(this)
-            builder.setTitle("Тренировка завершена")
-                .setMessage("Время тренировки: $time")
+            builder.setTitle("Время тренировки: $time")
+                .setMessage("Выполнено упражнений: " + getCompletedExercisesCount() + " из $exercisesValue")
                 .setPositiveButton("ОК") { dialog, id ->
                     dialog.cancel()
                 }.show()
@@ -178,5 +136,16 @@ class MesomorphFriday : AppCompatActivity() {
             on = false
             chronometer.setBase(SystemClock.elapsedRealtime())
         }
+    }
+
+    private fun getCompletedExercisesCount(): Int {
+        var completedExercisesCount = 0
+        for (exercise in MesomorphFriday.exercisesList) {
+            exercisesValue++
+            if (exercise.completed) {
+                completedExercisesCount++
+            }
+        }
+        return completedExercisesCount
     }
 }

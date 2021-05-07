@@ -98,6 +98,7 @@ class Monday : AppCompatActivity() {
                     }
                 }
             }
+            descIntent.putExtra("day", "Monday")
             descIntent.putExtra("pos", position)
             startActivity(descIntent)
         }
