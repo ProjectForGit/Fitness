@@ -34,19 +34,20 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/upper" />
+        app:layout_constraintTop_toBottomOf="@+id/upper"
+        android:layout_marginBottom="50dp" />
 
 
     <Button
         android:id="@+id/startButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/trainingbuttons"
         android:onClick="startButton"
         android:text="Начать тренировку"
+        app:layout_constraintTop_toBottomOf="@+id/listView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

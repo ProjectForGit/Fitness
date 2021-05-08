@@ -21,7 +21,7 @@
             app:tabGravity="fill"
             app:tabInlineLabel="true"
             app:tabMode="fixed"
-            app:tabTextColor="@color/cardview_light_background"></com.google.android.material.tabs.TabLayout>
+            app:tabTextColor="@color/cardview_light_background" />
 
 
         <androidx.viewpager.widget.ViewPager

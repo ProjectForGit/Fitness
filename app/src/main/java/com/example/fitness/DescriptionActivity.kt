@@ -57,6 +57,7 @@ class DescriptionActivity : AppCompatActivity() {
             "EndomorphWednesday" -> EndomorphWednesday.exercisesList[intent.getIntExtra("pos", -1)].completed = true
             "EndomorphFriday" -> EndomorphFriday.exercisesList[intent.getIntExtra("pos", -1)].completed = true
         }
+        startButton.visibility = View.INVISIBLE
         Toast.makeText(this, "Упражнение выполнено", Toast.LENGTH_SHORT).show()
     }
 
