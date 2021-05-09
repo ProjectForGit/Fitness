@@ -98,6 +98,7 @@ class Friday : AppCompatActivity() {
 
     fun startButton(view: View) {
         if (!on) {
+            chronometer.base = SystemClock.elapsedRealtime()
             chronometer.visibility = view.visibility
             chronometer.start()
             Toast.makeText(this, "Тренировка начата", Toast.LENGTH_SHORT).show()

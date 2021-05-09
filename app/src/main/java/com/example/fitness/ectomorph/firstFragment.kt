@@ -23,22 +23,6 @@ class firstFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_first, container, false)
 
-
-        /* val array = arrayOf("Понедельник","Среда","Пятница")
-
-        val adapter = ArrayAdapter(
-            context!!,
-            android.R.layout.simple_list_item_1,
-            array
-        )
-
-        val listView =
-            view?.findViewById<View>(R.id.daysList) as ListView
-        listView.adapter = adapter
-
-
-        return view */
-
     }
 
 }

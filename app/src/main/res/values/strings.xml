@@ -1,9 +1,12 @@
 <resources>
     <string name="app_name">Fitness</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string-array name="days">
-        <item>Понедельник</item>
-        <item>Среда</item>
-        <item>Пятница</item>
+
+
+    <string-array name="targetSportsman">
+        <item>Набор мышечной массы</item>
+        <item>Похудение</item>
     </string-array>
+
+
 </resources>

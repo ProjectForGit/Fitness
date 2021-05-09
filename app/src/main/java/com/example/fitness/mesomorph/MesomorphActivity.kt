@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.fitness.R
@@ -76,15 +77,31 @@ class MesomorphActivity : AppCompatActivity() {
         val heightText = heightPicker.value.toString().toInt()
         val weightText = weightPicker.value.toString().toInt()
         val ageText = agePicker.value.toString().toInt()
+        val spinner: Spinner = findViewById(R.id.spinner)
         var value = 0.0
+        val sportsmanTarget = spinner.selectedItem.toString()
 
-        if (woman.isChecked) {
-            value = (447.7 + (9.2 * weightText) + (3.1 * heightText) - (4.3 * ageText)) * 1.2
-            kcal.setText(value.toInt().toString())
+        if(sportsmanTarget == "Набор мышечной массы")
+        {
+            if (woman.isChecked) {
+                value = (447.7 + (9.2 * weightText) + (3.1 * heightText) - (4.3 * ageText)) * 1.3
+                kcal.setText(value.toInt().toString())
+            }
+            if (man.isChecked) {
+                value = (88.36 + (13.4 * weightText) + (4.8 * heightText) - (5.7 * ageText)) * 1.6
+                kcal.setText(value.toInt().toString())
+            }
         }
-        if (man.isChecked) {
-            value = (88.36 + (13.4 * weightText) + (4.8 * heightText) - (5.7 * ageText)) * 1.5
-            kcal.setText(value.toInt().toString())
+        else if (sportsmanTarget == "Похудение")
+        {
+            if (woman.isChecked) {
+                value = (447.7 + (9.2 * weightText) + (3.1 * heightText) - (4.3 * ageText)) * 1.15
+                kcal.setText(value.toInt().toString())
+            }
+            if (man.isChecked) {
+                value = (88.36 + (13.4 * weightText) + (4.8 * heightText) - (5.7 * ageText)) * 1.3
+                kcal.setText(value.toInt().toString())
+            }
         }
 
 

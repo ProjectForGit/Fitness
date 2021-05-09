@@ -7,6 +7,18 @@
     tools:context=".ectomorph.secondFragment">
 
 
+    <Spinner
+        android:id="@+id/spinner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:entries="@array/targetSportsman"
+        android:layout_marginLeft="35dp"
+        />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -71,21 +83,21 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:layout_width="160dp"
-        android:layout_height="160dp"
-        android:layout_marginTop="20dp"
+        android:id="@+id/circle"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="50dp"
         android:src="@drawable/dry_clean"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_goneMarginTop="20dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/kcal"
         style="@style/standartText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="95dp"
         android:gravity="center"
         android:textColor="#B2FF59"
         android:textSize="45dp"
@@ -94,6 +106,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <RadioGroup
+        android:id="@+id/group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
@@ -114,7 +127,7 @@
             android:id="@+id/man"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="60dp"
             android:layout_weight="1"
             android:text="Мужчина"
             android:textSize="15dp" />
